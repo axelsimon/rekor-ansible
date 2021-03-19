@@ -1,0 +1,23 @@
+---
+- name: Install MariaDB database from the repos
+  dnf:
+    name: mariadb-server
+    state: present
+
+- name: Create scripts directory
+  ansible.builtin.file:
+    path: /home/sigstore/scripts
+    state: directory
+
+- name: Copy MariaDB / MySQL preparation script
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: /home/sigstore/scripts/
+  loop:
+    - createdb.sh
+    - storage.sql
+
+- name: Run MariaDB / MySQL database and user preparation script
+  ansible.builtin.script:
+    cmd: /home/sigstore/scripts/createdb.sh
+    chdir: /home/sigstore/scripts/
