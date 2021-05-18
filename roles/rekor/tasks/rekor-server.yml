@@ -25,7 +25,7 @@
   register: has_rekor_server_installed
 
 - name: Install rekor server
-  ansible.builtin.copy:
+  copy:
     src: "~/go/src/github.com/sigstore/rekor/cmd/server/rekor-server"
     dest: "/usr/local/bin/"
     remote_src: yes

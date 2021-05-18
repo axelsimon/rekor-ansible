@@ -1,2 +1,2 @@
 ---
-- include: redis.yml
+- include_tasks: redis.yml

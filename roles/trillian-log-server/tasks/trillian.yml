@@ -25,7 +25,7 @@
   register: has_tlog_server_installed
 
 - name: Install Trillian server
-  ansible.builtin.copy:
+  copy:
     # copy works with ~ but not $HOME, not sure why
     src: "~/go/bin/trillian_log_server"
     dest: "/usr/local/bin/"
@@ -50,7 +50,7 @@
   register: has_tlog_signer_installed
 
 - name: Install Trillian signer
-  ansible.builtin.copy:
+  copy:
     src: "~/go/bin/trillian_log_signer"
     dest: "/usr/local/bin/"
     remote_src: yes

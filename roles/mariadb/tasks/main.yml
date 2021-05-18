@@ -1,2 +1,2 @@
 ---
-- include: mariadb-server.yml
+- include_tasks: mariadb-server.yml

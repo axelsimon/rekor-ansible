@@ -26,7 +26,7 @@
   register: has_rekor_cli_installed
 
 - name: Install rekor cli
-  ansible.builtin.copy:
+  copy:
     src: "~/go/src/github.com/sigstore/rekor/cmd/cli/rekor"
     dest: "/usr/local/bin/"
     remote_src: yes
