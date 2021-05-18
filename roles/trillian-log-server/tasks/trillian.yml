@@ -5,7 +5,12 @@
   register: has_trillian_code
 
 - name: Download Trillian transparency log source code
-  command: "go get -t -u github.com/google/trillian"
+  # Since Go 1.6, 'go get' will download code to 'pkg/mod/software@version'.
+  # We'll use Git to download to a predictable location.
+  #command: "go get -t -u github.com/google/trillian"
+  git:
+    repo: https://github.com/google/trillian
+    dest: "$HOME/go/src/github.com/google/trillian"
   when: not has_trillian_code.stat.exists
 
 - name: Check if we have already built Trillian server
